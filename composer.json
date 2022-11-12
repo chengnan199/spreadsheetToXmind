@@ -1,0 +1,11 @@
+{
+    "name": "administrator/xmind",
+    "autoload": {
+        "psr-4": {
+            "Administrator\\Xmind\\": "src/"
+        }
+    },
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.19"
+    }
+}
