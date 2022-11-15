@@ -54,31 +54,48 @@ function aa ($rawArr){
     $a = [];
     $a =  www($arr);
     var_dump(count($a));
-    file_put_contents('./tree.json',json_encode($a,JSON_UNESCAPED_UNICODE));
-//    file_put_contents('./tree1.json',json_encode($arr,JSON_UNESCAPED_UNICODE));
+//    var_dump($a);
+//    file_put_contents('./tree.json',json_encode($a,JSON_UNESCAPED_UNICODE));
+    file_put_contents('./tree1.json',json_encode($a,JSON_UNESCAPED_UNICODE));
 }
 function www ($arr) {
+//    file_put_contents('./tree.json',json_encode($arr,JSON_UNESCAPED_UNICODE),FILE_APPEND);
+//    $a = [];
+//    foreach ($arr as $k=>$v){
+//        if (!isset($a[$v['mergeRange']])){
+//            $a[$v['mergeRange']] = $v;
+//        }else{
+//            $a[$v['mergeRange']]['child'][] = $v;
+//        }
+//    }
+//    file_put_contents('./tree.json',json_encode($a,JSON_UNESCAPED_UNICODE));
+//die();
     static $lsit = [];
     $tree = [];
     $first = array_shift($arr);
+//var_dump($first);
+//    file_put_contents('./tree.json',json_encode($first,JSON_UNESCAPED_UNICODE));
 
+//die();
         foreach ($arr as $k=>$v){
-           if (in_array($v['coordinate'],$first['mergeRangeArr'])){
+           if (isset($first['mergeRangeArr'][$v['coordinate']])){
+
                $first['child'] = rrr($first,$v);
                unset($arr[$k]);
            }
         }
 
-        if ($arr){
-            www ($arr);
-        }
-    var_dump($first);
-    file_put_contents('./tree.json',json_encode($first,JSON_UNESCAPED_UNICODE));
-
+//        if ($arr){
+//            www ($arr);
+//        }
+//    var_dump($first);
+    file_put_contents('./tree1.json',json_encode($first,JSON_UNESCAPED_UNICODE));
+    $lsit[] = $first;
     die();
     return $lsit;
 }
 function rrr($origin , $range){
+    echo 1;
     $origin = $origin['child']??[];
     $range = $range['child']??[];
     if (!$range) return [];
@@ -88,7 +105,8 @@ function rrr($origin , $range){
         $flag = false;
         foreach ($origin as $kk => $origin_v) {
 //            如果在原数组中找到了可合并的项
-            if ($v['mergeRange'] == $origin_v['mergeRange']) {
+            if (isset($v['mergeRange']) && isset($origin_v['mergeRange']) && ($v['mergeRange'] == $origin_v['mergeRange'])) {
+//                echo 1;
                 $origin[$kk]['child'] = rrr($v, $origin_v);
                 $flag = true;
             }
@@ -104,7 +122,7 @@ function q ($arr){
     array_shift($arr);
     $child = mergeRangeToArr($arr[0]);
     if (isset($arr[1])){
-        $child['child'][] = q($arr);
+        $child['child'] = q($arr);
     }
     return $child;
 }
