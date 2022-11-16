@@ -1,20 +1,21 @@
 <?php
+namespace src\controller;
 
 //$arr = (new tree())->tree();
 //file_put_contents('./tree.json', json_encode($arr, JSON_UNESCAPED_UNICODE));
-class tree {
+class Tree {
     protected $rawArr;
-    function __construct(array $rawArr=[]){
-        if (!$rawArr){
-            //获取要转化的JSON并转化为数组对象
-            $rawArr = json_decode(file_get_contents('./json.json'));
-            $rawArr = json_decode(json_encode($rawArr), true);
-        }
-        $this->rawArr = $rawArr;
+    function __construct(){
+//        if (!$rawArr){
+//            //获取要转化的JSON并转化为数组对象
+//            $rawArr = json_decode(file_get_contents('./json.json'));
+//            $rawArr = json_decode(json_encode($rawArr), true);
+//        }
+//        $this->rawArr = $rawArr;
     }
-    function tree()
+    function tree(array $rawArr)
     {
-        $arr = $this->filterTree($this->rawArr);
+        $arr = $this->filterTree($rawArr);
 
         $count = count($arr);
         for ($i = 0; $i < $count; $i++) {

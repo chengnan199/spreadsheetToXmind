@@ -2,7 +2,8 @@
     "name": "administrator/xmind",
     "autoload": {
         "psr-4": {
-            "Administrator\\Xmind\\": "src/"
+            "Administrator\\Xmind\\": "src/",
+            "src\\controller\\": "src/controller/"
         }
     },
     "require": {

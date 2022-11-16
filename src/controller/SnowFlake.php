@@ -1,4 +1,5 @@
 <?php
+namespace src\controller;
 
 /*
   一、雪花算法
