@@ -4,7 +4,7 @@ namespace src\controller;
 //$arr = (new tree())->tree();
 //file_put_contents('./tree.json', json_encode($arr, JSON_UNESCAPED_UNICODE));
 class Tree {
-    protected $rawArr;
+//    protected $rawArr;
     function __construct(){
 //        if (!$rawArr){
 //            //获取要转化的JSON并转化为数组对象
@@ -13,7 +13,7 @@ class Tree {
 //        }
 //        $this->rawArr = $rawArr;
     }
-    function tree(array $rawArr)
+    function tree(array $rawArr) :array
     {
         $arr = $this->filterTree($rawArr);
 
@@ -26,15 +26,14 @@ class Tree {
                 }
             }
         }
-        $arr = array_values($arr);
-        return $arr;
+        return array_values($arr);
     }
 
 //将同一行的元素创建属性结构，并删除多余元素
-    function filterTree($rawArr)
+    function filterTree($rawArr):array
     {
         $arr = [];
-        foreach ($rawArr as $k => $v) {
+        foreach ($rawArr as  $v) {
             array_pop($v);
             $v[0]['child'][] = $this->toTree($v);
             $arr[] = $this->mergeRangeToArr($v[0]);
@@ -49,7 +48,7 @@ class Tree {
         $range = $range['child'] ?? [];
         if (!$range) return [];
 
-        foreach ($range as $k => $range_v) {
+        foreach ($range as $range_v) {
             $flag = false;
             foreach ($origin as $kk => $origin_v) {
 //            如果在原数组中找到了可合并的项

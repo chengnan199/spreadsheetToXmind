@@ -24,14 +24,14 @@ class Xmind {
      * @param $path string 生成的路径地址
      * @return void
      */
-    function index($fileName,$path){
+    function index(string $fileName,string $path){
 //        $fileName = './测试.xlsx';
         $excelData = (new Excel())->getExcelData($fileName);
         $data = (new Tree())->tree($excelData);
         $this->CreateXmind($data,$path);
     }
 
-    function CreateXmind($data,$path){
+    function CreateXmind($data,$path):string {
         $str = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xmap-content xmlns="urn:xmind:xmap:xmlns:content:2.0" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" modified-by="ddl" timestamp="1607912245582" version="2.0">
     <sheet id="3eqb5chq516v2bi0hqo52cvnjd" modified-by="ddl" theme="5disc9luc2p2tdqg4fh9sln9ub" timestamp="1607912245582">        
@@ -67,7 +67,6 @@ class Xmind {
 //    添加为xmind压缩包
     function zip ($filename,$contentFileData =''){
         //xmind的内部结构由 三部分组成 style.xml  comments.xml content.xml
-        $fileList = [];
 //style.xml文件
         $styleFile = $this->styleFile;
         $style = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>

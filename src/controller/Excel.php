@@ -3,15 +3,15 @@ namespace src\controller;
 
 require './vendor/autoload.php';
 
-use \PhpOffice\PhpSpreadsheet\IOFactory ;
+use PhpOffice\PhpSpreadsheet\IOFactory ;
 
 class Excel {
-    function getExcelData ($fileName){
+    function getExcelData ($fileName) :array{
         $spreadsheet = IOFactory::load($fileName);
         $worksheet = $spreadsheet->getActiveSheet();
 //        echo '<table  border="1">' . PHP_EOL;
         $rawArr = [];
-        foreach ($worksheet->getRowIterator()  as $k=>$v){
+        foreach ($worksheet->getRowIterator()  as $v){
 //            echo '<tr>' . PHP_EOL;
             $cellIterator = $v->getCellIterator();
             $cellIterator->setIterateOnlyExistingCells(FALSE);
