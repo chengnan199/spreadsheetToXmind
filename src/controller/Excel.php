@@ -1,8 +1,6 @@
 <?php
 namespace src\controller;
 
-require './vendor/autoload.php';
-
 use PhpOffice\PhpSpreadsheet\IOFactory ;
 
 class Excel {
