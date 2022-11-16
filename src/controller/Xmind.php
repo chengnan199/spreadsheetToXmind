@@ -25,7 +25,7 @@ class Xmind {
      * @return void
      */
     function index($fileName,$path){
-//        $fileName = './老年大学教务平台服务端.xlsx';
+//        $fileName = './测试.xlsx';
         $excelData = (new Excel())->getExcelData($fileName);
         $data = (new Tree())->tree($excelData);
         $this->CreateXmind($data,$path);
