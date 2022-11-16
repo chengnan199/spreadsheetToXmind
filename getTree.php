@@ -1,141 +1,97 @@
 <?php
-//获取要转化的JSON并转化为数组对象
-$rawArr = json_decode(file_get_contents('./json.json'));
-function ss ($data){
-    $arr = [];
-    $arr1 = [];
-    foreach ($data as $k=>$v){
-        $arr1[$v->mergeRange][] = $v;
 
-        if (isset($arr[$v->mergeRange])){
-           array_push($arr[$v->mergeRange]['rowArr'],$v->row);
-        }else{
-            $arr[$v->mergeRange] = [
-                'value'=>$v->value,
-                'mergeRange'=>$v->mergeRange,
-                'column'=>$v->column,
-                'coordinate'=>$v->coordinate,
-                'row'=>$v->row,
-                'rowArr'=>[$v->row],
-            ];
+//$arr = (new tree())->tree();
+//file_put_contents('./tree.json', json_encode($arr, JSON_UNESCAPED_UNICODE));
+class tree {
+    protected $rawArr;
+    function __construct(array $rawArr=[]){
+        if (!$rawArr){
+            //获取要转化的JSON并转化为数组对象
+            $rawArr = json_decode(file_get_contents('./json.json'));
+            $rawArr = json_decode(json_encode($rawArr), true);
         }
+        $this->rawArr = $rawArr;
     }
-    return $arr;
-}
+    function tree()
+    {
+        $arr = $this->filterTree($this->rawArr);
 
-function tree ($rawArr){
-    $data = [];
-    $last = [];
-    foreach ($rawArr as $k=>$v){
-        $endColumn = end($v)->column;
-        foreach ($v as $kk=>$vv){
-            if ($vv->column == $endColumn){
-                continue;
+        $count = count($arr);
+        for ($i = 0; $i < $count; $i++) {
+            for ($y = $i + 1; $y < $count; $y++) {
+                if (!empty($arr[$i]['mergeRangeArr']) && array_key_exists($arr[$y]['coordinate'], $arr[$i]['mergeRangeArr'])) {
+                    $arr[$i]['child'] = $this->merge($arr[$i], $arr[$y]);
+                    unset($arr[$y]);
+                }
             }
-            if (!$vv->value){
-                $vv->value = $last[$kk]->value;
-            }
-            $vv = mergeRangeToArr($vv);
-            $data[] = $vv;
         }
-        $last = $v;
+        $arr = array_values($arr);
+        return $arr;
     }
-    return $data;
-}
-function aa ($rawArr){
-    $rawArr = json_decode(json_encode($rawArr),true);
 
-    $arr = [];
-    foreach ($rawArr as $k=>&$v){
-        $v[0]['child'][] = q($v);
-        $arr[] = mergeRangeToArr($v[0]);
+//将同一行的元素创建属性结构，并删除多余元素
+    function filterTree($rawArr)
+    {
+        $arr = [];
+        foreach ($rawArr as $k => $v) {
+            array_pop($v);
+            $v[0]['child'][] = $this->toTree($v);
+            $arr[] = $this->mergeRangeToArr($v[0]);
+        }
+        return $arr;
     }
-    unset($v);
-    $a = [];
-    $a =  www($arr);
-    var_dump(count($a));
-    file_put_contents('./tree.json',json_encode($a,JSON_UNESCAPED_UNICODE));
-//    file_put_contents('./tree1.json',json_encode($arr,JSON_UNESCAPED_UNICODE));
-}
-function www ($arr) {
-    static $lsit = [];
-    $tree = [];
-    $first = array_shift($arr);
 
-        foreach ($arr as $k=>$v){
-           if (in_array($v['coordinate'],$first['mergeRangeArr'])){
-               $first['child'] = rrr($first,$v);
-               unset($arr[$k]);
-           }
-        }
+//合并相同单元格的数据
+    function merge($origin, $range)
+    {
+        $origin = $origin['child'] ?? [];
+        $range = $range['child'] ?? [];
+        if (!$range) return [];
 
-        if ($arr){
-            www ($arr);
-        }
-    var_dump($first);
-    file_put_contents('./tree.json',json_encode($first,JSON_UNESCAPED_UNICODE));
-
-    die();
-    return $lsit;
-}
-function rrr($origin , $range){
-    $origin = $origin['child']??[];
-    $range = $range['child']??[];
-    if (!$range) return [];
-    $arr = array_merge($origin,$range);
-
-    foreach ($range as $k => $v) {
-        $flag = false;
-        foreach ($origin as $kk => $origin_v) {
+        foreach ($range as $k => $range_v) {
+            $flag = false;
+            foreach ($origin as $kk => $origin_v) {
 //            如果在原数组中找到了可合并的项
-            if ($v['mergeRange'] == $origin_v['mergeRange']) {
-                $origin[$kk]['child'] = rrr($v, $origin_v);
-                $flag = true;
+                if ($range_v['mergeRange'] && $origin_v['mergeRange'] && ($range_v['mergeRange'] == $origin_v['mergeRange'])) {
+                    $origin[$kk]['child'] = $this->merge($origin_v, $range_v);
+                    $flag = true;
+                }
+            }
+//        如果不存在
+            if (!$flag) {
+                $origin[] = $range_v;
             }
         }
-//        如果不存在
-        if (!$flag){
-            $origin[] = $v;
+        return $origin;
+    }
+
+//同一行转化为树形结构
+    function toTree($arr)
+    {
+        array_shift($arr);
+        $child = $this->mergeRangeToArr($arr[0]);
+        if (isset($arr[1])) {
+            $child['child'][] = $this->toTree($arr);
         }
+        return $child;
     }
- return $origin;
-}
-function q ($arr){
-    array_shift($arr);
-    $child = mergeRangeToArr($arr[0]);
-    if (isset($arr[1])){
-        $child['child'][] = q($arr);
-    }
-    return $child;
-}
-aa($rawArr);
-//aa($rawArr);
+
 //mergeRange 范围转成数组
-function mergeRangeToArr ($vv){
-    $vv = json_decode(json_encode($vv));
-
-    $column = $vv->column;
-    $merge = $vv->mergeRange;
-    $mergeArr = [];
-    if (!$merge || !strstr($merge,':')){
-//        $coordinate =  $vv->coordinate;
-//        $mergeRange = $coordinate.':'.$coordinate;
-//        $vv->mergeRange = $mergeRange;
-//        $mergeArr =  [$coordinate=>$mergeRange];
-    }else{
-        $limit =  explode(':',str_replace($column,'',$merge));
-        for ($i = $limit[0];$i<=$limit[1];$i++){
-            $mergeArr[$column.$i] = $merge;
+    function mergeRangeToArr($vv)
+    {
+        $column = $vv['column'];
+        $merge = $vv['mergeRange'];
+        $mergeArr = [];
+        if ($merge && strstr($merge, ':')) {
+            $limit = explode(':', str_replace($column, '', $merge));
+            for ($i = $limit[0]; $i <= $limit[1]; $i++) {
+                $mergeArr[$column . $i] = $merge;
+            }
         }
+        $vv['mergeRangeArr'] = $mergeArr;
+        return $vv;
     }
 
-    $vv->mergeRangeArr = $mergeArr;
-    $vv = json_decode(json_encode($vv),true);
-    return $vv;
 }
-function a ($kk,&$arr){
 
-}
-//$data = tree($rawArr);
-////var_dump($data);
-//file_put_contents('./tree.json',json_encode($data,JSON_UNESCAPED_UNICODE));
+
