@@ -4,50 +4,50 @@
      <topic id="0tao7efgjol3d6p97okrr7e9e3" modified-by="ddl" structure-class="org.xmind.ui.map.unbalanced" timestamp="1607912245582">
             <title>服务端</title>  
             <children>
-                <topics type="attached"><topic id="4195809626534452551" modified-by="Administrator" timestamp="1668582719339.1">
+                <topics type="attached"><topic id="4195815717150399838" modified-by="Administrator" timestamp="1668584171456">
                         <title>平台管理</title>            <children>
-                <topics type="attached"><topic id="4195809626534449359" modified-by="Administrator" timestamp="1668582719339.1">
+                <topics type="attached"><topic id="4195815717150399680" modified-by="Administrator" timestamp="1668584171456">
                         <title>系统设置</title>            <children>
-                <topics type="attached"><topic id="4195809626534452300" modified-by="Administrator" timestamp="1668582719339.1">
-                        <title>提供平台运行基础参数的设置管理功能，包括业务服务功能的启闭、应用模块的管理等。</title></topic></topics></children></topic><topic id="4195809626534452101" modified-by="Administrator" timestamp="1668582719339.1">
+                <topics type="attached"><topic id="4195815717150397856" modified-by="Administrator" timestamp="1668584171456">
+                        <title>系统设置的说明</title></topic></topics></children></topic><topic id="4195815717150398074" modified-by="Administrator" timestamp="1668584171456">
                         <title>移动端设置</title>            <children>
-                <topics type="attached"><topic id="4195809626534449303" modified-by="Administrator" timestamp="1668582719339.1">
-                        <title>主要包括移动端的导航设置、banner设置以及个人中心功能导航设置等。</title></topic></topics></children></topic><topic id="4195809626534450913" modified-by="Administrator" timestamp="1668582719339.1">
+                <topics type="attached"><topic id="4195815717154593820" modified-by="Administrator" timestamp="1668584171456">
+                        <title>移动端设置的说明</title></topic></topics></children></topic><topic id="4195815717154590976" modified-by="Administrator" timestamp="1668584171456">
                         <title>菜单管理</title>            <children>
-                <topics type="attached"><topic id="4195809626534450369" modified-by="Administrator" timestamp="1668582719339.1">
-                        <title>主要为Web管理端的菜单维护。</title></topic></topics></children></topic><topic id="4195809626534449980" modified-by="Administrator" timestamp="1668582719339.2">
+                <topics type="attached"><topic id="4195815717154593968" modified-by="Administrator" timestamp="1668584171456.1">
+                        <title>菜单管理的说明</title></topic></topics></children></topic><topic id="4195815717154594032" modified-by="Administrator" timestamp="1668584171456.1">
                         <title>权限管理</title>            <children>
-                <topics type="attached"><topic id="4195809626534450237" modified-by="Administrator" timestamp="1668582719339.2">
-                        <title>平台运行的基础，平台功能及数据具有严格且细致的划分，权限管理模块具有部门、岗位、角色、功能权限和数据权限的统一控制能力。</title></topic></topics></children></topic><topic id="4195809626534450924" modified-by="Administrator" timestamp="1668582719339.2">
+                <topics type="attached"><topic id="4195815717154592167" modified-by="Administrator" timestamp="1668584171456.1">
+                        <title>权限管理的说明</title></topic></topics></children></topic><topic id="4195815717154592164" modified-by="Administrator" timestamp="1668584171456.1">
                         <title>用户管理</title>            <children>
-                <topics type="attached"><topic id="4195809626534450832" modified-by="Administrator" timestamp="1668582719339.2">
-                        <title>账号互通的前提下包括管理员、教师、学生所有用户的账号管理。</title></topic></topics></children></topic><topic id="4195809626534451073" modified-by="Administrator" timestamp="1668582719339.2">
+                <topics type="attached"><topic id="4195815717154591841" modified-by="Administrator" timestamp="1668584171456.1">
+                        <title>用户管理的说明</title></topic></topics></children></topic><topic id="4195815717154591533" modified-by="Administrator" timestamp="1668584171456.1">
                         <title>字典维护</title>            <children>
-                <topics type="attached"><topic id="4195809626534450612" modified-by="Administrator" timestamp="1668582719339.2">
-                        <title>平台字典参数维护。</title></topic></topics></children></topic><topic id="4195809626534451191" modified-by="Administrator" timestamp="1668582719339.2">
+                <topics type="attached"><topic id="4195815717154593141" modified-by="Administrator" timestamp="1668584171456.1">
+                        <title>字典维护的说明</title></topic></topics></children></topic><topic id="4195815717154594425" modified-by="Administrator" timestamp="1668584171456.1">
                         <title>内容安全</title>            <children>
-                <topics type="attached"><topic id="4195809626534451094" modified-by="Administrator" timestamp="1668582719339.2">
-                        <title>平台所有用户上传的内容（文字、图片、语音、视频）安全检测（鉴黄、暴恐、政治敏感等），包括系统自动检测和人工复审，对于系统能自动检测到的违规内容则采取删除、不予发布措施，对于系统不确定内容将进入人工复审环节，通过人工确定是否安全。</title></topic></topics></children></topic></topics></children></topic><topic id="4195809626534451999" modified-by="Administrator" timestamp="1668582719339.2">
+                <topics type="attached"><topic id="4195815717154593672" modified-by="Administrator" timestamp="1668584171456.2">
+                        <title>内容安全的说明</title></topic></topics></children></topic></topics></children></topic><topic id="4195815717154592496" modified-by="Administrator" timestamp="1668584171456.2">
                         <title>通信协作</title>            <children>
-                <topics type="attached"><topic id="4195809626534452012" modified-by="Administrator" timestamp="1668582719339.2">
+                <topics type="attached"><topic id="4195815717154593640" modified-by="Administrator" timestamp="1668584171456.2">
                         <title>即时通讯</title>            <children>
-                <topics type="attached"><topic id="4195809626534449177" modified-by="Administrator" timestamp="1668582719339.3">
-                        <title>为Web管理端及各移动端业务模块提供功能及服务运行所需的基础通讯服务、移动端业务功能挂接、消息通知提醒、已读未读等，采用多样化功能丰富的消息中心，为整个平台提效赋能。移动端支持微信小程序和微信消息推送。</title></topic></topics></children></topic><topic id="4195809626534450315" modified-by="Administrator" timestamp="1668582719339.3">
+                <topics type="attached"><topic id="4195815717154591079" modified-by="Administrator" timestamp="1668584171456.2">
+                        <title>即时通讯的说明</title></topic></topics></children></topic><topic id="4195815717154592214" modified-by="Administrator" timestamp="1668584171456.2">
                         <title>手机短信</title>            <children>
-                <topics type="attached"><topic id="4195809626534449700" modified-by="Administrator" timestamp="1668582719339.3">
-                        <title>可设置重要消息进行手机短信提醒，管理端可配置短信服务商、短信签名、短信模板，查看短信发送记录等。</title></topic></topics></children></topic></topics></children></topic><topic id="4195809626534452858" modified-by="Administrator" timestamp="1668582719339.3">
+                <topics type="attached"><topic id="4195815717154590871" modified-by="Administrator" timestamp="1668584171456.2">
+                        <title>手机短信的说明</title></topic></topics></children></topic></topics></children></topic><topic id="4195815717154593366" modified-by="Administrator" timestamp="1668584171456.2">
                         <title>文件管理</title>            <children>
-                <topics type="attached"><topic id="4195809626534449605" modified-by="Administrator" timestamp="1668582719339.3">
+                <topics type="attached"><topic id="4195815717154593809" modified-by="Administrator" timestamp="1668584171456.2">
                         <title>云存储OSS</title>            <children>
-                <topics type="attached"><topic id="4195809626534449280" modified-by="Administrator" timestamp="1668582719339.3">
-                        <title>管理端可配置第三方云存储参数，文件上传配置（文件类型、文件大小），管理端可管理所有上传的文件（查看、删除）</title></topic></topics></children></topic><topic id="4195809626534452658" modified-by="Administrator" timestamp="1668582719339.3">
+                <topics type="attached"><topic id="4195815717154591504" modified-by="Administrator" timestamp="1668584171456.2">
+                        <title>云存储OSS的说明</title></topic></topics></children></topic><topic id="4195815717154592926" modified-by="Administrator" timestamp="1668584171456.2">
                         <title>网盘</title>            <children>
-                <topics type="attached"><topic id="4195809626534449514" modified-by="Administrator" timestamp="1668582719339.3">
-                        <title>网盘管理，具有上传、复制、移动、删除、重命名、分享等基础功能，分为个人空间和组空间</title></topic></topics></children></topic></topics></children></topic><topic id="4195809626534452236" modified-by="Administrator" timestamp="1668582719339.4">
+                <topics type="attached"><topic id="4195815717154594090" modified-by="Administrator" timestamp="1668584171456.3">
+                        <title>网盘的说明</title></topic></topics></children></topic></topics></children></topic><topic id="4195815717154592350" modified-by="Administrator" timestamp="1668584171456.3">
                         <title>数据大屏</title>            <children>
-                <topics type="attached"><topic id="4195809626534450407" modified-by="Administrator" timestamp="1668582719339.4">
+                <topics type="attached"><topic id="4195815717154591043" modified-by="Administrator" timestamp="1668584171456.3">
                         <title>数据大屏</title>            <children>
-                <topics type="attached"><topic id="4195809626534449392" modified-by="Administrator" timestamp="1668582719339.4">
-                        <title>数据大屏，又称领导驾驶舱，平台自动从上线功能中提取学校各类业务数据，以动态图表形式集中展示，为学校领导层掌握学校动态、分析工作开展情况、制定管理决策提供科学、详实的数据支持。</title></topic></topics></children></topic></topics></children></topic></topics></children>        </topic><title>服务端</title>
+                <topics type="attached"><topic id="4195815717154592753" modified-by="Administrator" timestamp="1668584171456.3">
+                        <title>数据大屏的说明</title></topic></topics></children></topic></topics></children></topic></topics></children>        </topic><title>服务端</title>
                 </sheet>
             </xmap-content>
